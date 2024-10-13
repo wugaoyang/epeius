@@ -3,6 +3,7 @@ name = "epeius"
 main = "src/_worker.src.js"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
+vars = {PASSWORD = 'ADMIN123456', PROXYIP = '5.161.191.23', ADDAPI = 'https://cf-data-api.tech-site.workers.dev/api/db/bestips'}
 # 构建配置
 #build = {command = "npm run build",  cwd = ".",upload = {format = "service-worker", dir = "./dist" }}
 # Workers Logs
