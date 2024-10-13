@@ -1,6 +1,6 @@
 #:schema node_modules/wrangler/config-schema.json
 name = "epeius"
-main = "_worker.src.js"
+main = "src/_worker.src.js"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
 # 构建配置

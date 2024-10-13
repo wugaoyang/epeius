@@ -29,37 +29,6 @@ var __publicField = (obj, key, value) => {
     return value;
 };
 
-// .wrangler/tmp/bundle-dSPmBW/checked-fetch.js
-function checkURL(request, init) {
-    const url = request instanceof URL ? request : new URL(
-        (typeof request === "string" ? new Request(request, init) : request).url
-    );
-    if (url.port && url.port !== "443" && url.protocol === "https:") {
-        if (!urls.has(url.toString())) {
-            urls.add(url.toString());
-            console.warn(
-                `WARNING: known issue with \`fetch()\` requests to custom HTTPS ports in published Workers:
- - ${url.toString()} - the custom port will be ignored when the Worker is published using the \`wrangler deploy\` command.
-`
-            );
-        }
-    }
-}
-var urls;
-var init_checked_fetch = __esm({
-    ".wrangler/tmp/bundle-dSPmBW/checked-fetch.js"() {
-        urls = /* @__PURE__ */ new Set();
-        __name(checkURL, "checkURL");
-        globalThis.fetch = new Proxy(globalThis.fetch, {
-            apply(target, thisArg, argArray) {
-                const [request, init] = argArray;
-                checkURL(request, init);
-                return Reflect.apply(target, thisArg, argArray);
-            }
-        });
-    }
-});
-
 // node_modules/wrangler/_virtual_unenv_global_polyfill-clear$immediate.js
 var init_virtual_unenv_global_polyfill_clear_immediate = __esm({
     "node_modules/wrangler/_virtual_unenv_global_polyfill-clear$immediate.js"() {
@@ -88,8 +57,6 @@ function notImplementedClass(name) {
 }
 var init_utils = __esm({
     "node_modules/unenv/runtime/_internal/utils.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -105,8 +72,6 @@ var init_utils = __esm({
 var noop_default;
 var init_noop = __esm({
     "node_modules/unenv/runtime/mock/noop.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -121,8 +86,6 @@ var init_noop = __esm({
 var Immediate;
 var init_immediate = __esm({
     "node_modules/unenv/runtime/node/timers/internal/immediate.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -174,8 +137,6 @@ function clearImmediateFallback(immediate) {
 }
 var init_set_immediate = __esm({
     "node_modules/unenv/runtime/node/timers/internal/set-immediate.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -192,8 +153,6 @@ var init_set_immediate = __esm({
 // node_modules/unenv/runtime/node/timers/$cloudflare.mjs
 var init_cloudflare = __esm({
     "node_modules/unenv/runtime/node/timers/$cloudflare.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -247,8 +206,6 @@ function createMock(name, overrides = {}) {
 var fn, proxy_default;
 var init_proxy = __esm({
     "node_modules/unenv/runtime/mock/proxy.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -266,8 +223,6 @@ import { Writable } from "node:stream";
 var _console, _ignoreErrors, _stderr, _stdout, log, info, trace, debug, table, error, warn, createTask, assert, clear, count, countReset, dir, dirxml, group, groupEnd, groupCollapsed, profile, profileEnd, time, timeEnd, timeLog, timeStamp, Console;
 var init_console = __esm({
     "node_modules/unenv/runtime/node/console/index.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -313,8 +268,6 @@ var init_console = __esm({
 var workerdConsole, assert2, clear2, context, count2, countReset2, createTask2, debug2, dir2, dirxml2, error2, group2, groupCollapsed2, groupEnd2, info2, log2, profile2, profileEnd2, table2, time2, timeEnd2, timeLog2, timeStamp2, trace2, warn2, cloudflare_default;
 var init_cloudflare2 = __esm({
     "node_modules/unenv/runtime/node/console/$cloudflare.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -379,8 +332,6 @@ var init_virtual_unenv_global_polyfill_console = __esm({
 var _supportedEntryTypes, _PerformanceEntry, PerformanceEntry, _PerformanceMark, PerformanceMark, _PerformanceMeasure, PerformanceMeasure, _PerformanceResourceTiming, PerformanceResourceTiming;
 var init_entry = __esm({
     "node_modules/unenv/runtime/web/performance/_entry.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -464,8 +415,6 @@ var init_entry = __esm({
 var _timeOrigin, _Performance, Performance, performance2;
 var init_performance = __esm({
     "node_modules/unenv/runtime/web/performance/_performance.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -562,8 +511,6 @@ var init_performance = __esm({
 var _PerformanceObserver, PerformanceObserver, _PerformanceObserverEntryList, PerformanceObserverEntryList;
 var init_observer = __esm({
     "node_modules/unenv/runtime/web/performance/_observer.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -610,8 +557,6 @@ var init_observer = __esm({
 // node_modules/unenv/runtime/web/performance/index.mjs
 var init_performance2 = __esm({
     "node_modules/unenv/runtime/web/performance/index.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -642,8 +587,6 @@ function getGlobal() {
 var global_this_default;
 var init_global_this = __esm({
     "node_modules/unenv/runtime/polyfill/global-this.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -658,8 +601,6 @@ var init_global_this = __esm({
 var performance_default;
 var init_performance3 = __esm({
     "node_modules/unenv/runtime/polyfill/performance.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -691,8 +632,6 @@ var init_virtual_unenv_global_polyfill_performance = __esm({
 var empty_default;
 var init_empty = __esm({
     "node_modules/unenv/runtime/mock/empty.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -710,8 +649,6 @@ var init_empty = __esm({
 var _envShim, _processEnv, _getEnv, env;
 var init_env = __esm({
     "node_modules/unenv/runtime/node/process/internal/env.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -802,8 +739,6 @@ function _createNextTickWithTimeout() {
 var hrtime, nextTick;
 var init_time = __esm({
     "node_modules/unenv/runtime/node/process/internal/time.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -845,8 +780,6 @@ function noop() {
 var title, argv, version, versions, on, addListener, once, off, removeListener, removeAllListeners, emit, prependListener, prependOnceListener, listeners, listenerCount, binding, _cwd, cwd, chdir, umask, getegid, geteuid, getgid, getuid, getgroups, getBuiltinModule, abort, allowedNodeEnvironmentFlags, arch, argv0, config, connected, constrainedMemory, availableMemory, cpuUsage, debugPort, dlopen, disconnect, emitWarning, eventNames, execArgv, execPath, exit, features, getActiveResourcesInfo, getMaxListeners, kill, memoryUsage, pid, platform, ppid, rawListeners, release, report, resourceUsage, setegid, seteuid, setgid, setgroups, setuid, setMaxListeners, setSourceMapsEnabled, stdout, stderr, stdin, traceDeprecation, uptime, exitCode, setUncaughtExceptionCaptureCallback, hasUncaughtExceptionCaptureCallback, sourceMapsEnabled, loadEnvFile, mainModule, permission, channel, throwDeprecation, assert3, openStdin, _debugEnd, _debugProcess, _fatalException, _getActiveHandles, _getActiveRequests, _kill, _preload_modules, _rawDebug, _startProfilerIdleNotifier, _stopProfilerIdleNotifier, _tickCallback, _linkedBinding, domain, initgroups, moduleLoadList, reallyExit, _exiting, _events, _eventsCount, _maxListeners, process2;
 var init_process = __esm({
     "node_modules/unenv/runtime/node/process/internal/process.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -1156,8 +1089,6 @@ var init_process = __esm({
 var unpatchedGlobalThisProcess, getBuiltinModule2, workerdProcess, env2, nextTick2, _process, cloudflare_default2;
 var init_cloudflare3 = __esm({
     "node_modules/unenv/runtime/node/process/$cloudflare.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -1291,26 +1222,6 @@ var init_virtual_unenv_global_polyfill_process = __esm({
     }
 });
 
-// wrangler-modules-watch:wrangler:modules-watch
-var init_wrangler_modules_watch = __esm({
-    "wrangler-modules-watch:wrangler:modules-watch"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
-        init_virtual_unenv_global_polyfill_process();
-        init_virtual_unenv_global_polyfill_performance();
-        init_virtual_unenv_global_polyfill_console();
-        init_virtual_unenv_global_polyfill_set_immediate();
-        init_virtual_unenv_global_polyfill_clear_immediate();
-    }
-});
-
-// node_modules/wrangler/templates/modules-watch-stub.js
-var init_modules_watch_stub = __esm({
-    "node_modules/wrangler/templates/modules-watch-stub.js"() {
-        init_wrangler_modules_watch();
-    }
-});
-
 // node_modules/unenv/runtime/node/crypto/internal/web.mjs
 var web_exports = {};
 __export(web_exports, {
@@ -1321,8 +1232,6 @@ __export(web_exports, {
 var subtle, randomUUID, getRandomValues;
 var init_web = __esm({
     "node_modules/unenv/runtime/node/crypto/internal/web.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -1413,8 +1322,6 @@ __export(node_exports, {
 var MAX_RANDOM_VALUE_BYTES, webcrypto, randomBytes, fips, constants, checkPrime, checkPrimeSync, createCipher, createDecipher, pseudoRandomBytes, createCipheriv, createDecipheriv, createDiffieHellman, createDiffieHellmanGroup, createECDH, createHash, createHmac, createPrivateKey, createPublicKey, createSecretKey, createSign, createVerify, diffieHellman, generatePrime, generatePrimeSync, getCiphers, getCipherInfo, getCurves, getDiffieHellman, getHashes, hkdf, hkdfSync, pbkdf2, pbkdf2Sync, generateKeyPair, generateKeyPairSync, generateKey, generateKeySync, privateDecrypt, privateEncrypt, publicDecrypt, publicEncrypt, randomFill, randomFillSync, randomInt, scrypt, scryptSync, sign, setEngine, timingSafeEqual, getFips, setFips, verify, secureHeapUsed, hash, Certificate, Cipher, Cipheriv, Decipher, Decipheriv, DiffieHellman, DiffieHellmanGroup, ECDH, Hash, Hmac, KeyObject, Sign, Verify, X509Certificate;
 var init_node = __esm({
     "node_modules/unenv/runtime/node/crypto/internal/node.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -1581,8 +1488,6 @@ var init_node = __esm({
 var constants2, constants_default;
 var init_constants = __esm({
     "node_modules/unenv/runtime/node/crypto/internal/constants.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -1698,8 +1603,6 @@ var init_constants = __esm({
 var crypto_default;
 var init_crypto = __esm({
     "node_modules/unenv/runtime/node/crypto/index.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -1724,8 +1627,6 @@ var init_crypto = __esm({
 var workerdCrypto, Certificate2, DiffieHellman2, DiffieHellmanGroup2, Hash2, Hmac2, KeyObject2, X509Certificate2, checkPrime2, checkPrimeSync2, createDiffieHellman2, createDiffieHellmanGroup2, createHash2, createHmac2, createPrivateKey2, createPublicKey2, createSecretKey2, generateKey2, generateKeyPair2, generateKeyPairSync2, generateKeySync2, generatePrime2, generatePrimeSync2, getCiphers2, getCurves2, getDiffieHellman2, getFips2, getHashes2, hkdf2, hkdfSync2, pbkdf22, pbkdf2Sync2, randomBytes2, randomFill2, randomFillSync2, randomInt2, randomUUID2, scrypt2, scryptSync2, secureHeapUsed2, setEngine2, setFips2, subtle2, timingSafeEqual2, getRandomValues2, webcrypto2, fips2, cloudflare_default3;
 var init_cloudflare4 = __esm({
     "node_modules/unenv/runtime/node/crypto/$cloudflare.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -1878,8 +1779,6 @@ var init_cloudflare4 = __esm({
 // node-built-in-modules:crypto
 var require_crypto = __commonJS({
     "node-built-in-modules:crypto"(exports, module2) {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -1973,8 +1872,6 @@ function fromByteArray(uint8) {
 var lookup, revLookup, Arr, code;
 var init_base64 = __esm({
     "node_modules/unenv/runtime/node/buffer/internal/base64.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -2089,8 +1986,6 @@ function write(buffer, value, offset, isLE, mLen, nBytes) {
 }
 var init_ieee754 = __esm({
     "node_modules/unenv/runtime/node/buffer/internal/ieee754.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -2955,8 +2850,6 @@ function BufferBigIntNotDefined() {
 var customInspectSymbol, INSPECT_MAX_BYTES, K_MAX_LENGTH, MAX_ARGUMENTS_LENGTH, errors, INVALID_BASE64_RE, hexSliceLookupTable;
 var init_buffer = __esm({
     "node_modules/unenv/runtime/node/buffer/internal/buffer.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -4006,8 +3899,6 @@ var init_buffer = __esm({
 var File;
 var init_file = __esm({
     "node_modules/unenv/runtime/node/buffer/internal/file.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -4047,8 +3938,6 @@ var init_file = __esm({
 var Buffer3, Blob2, resolveObjectURL, transcode, isUtf8, isAscii, btoa2, atob2;
 var init_buffer2 = __esm({
     "node_modules/unenv/runtime/node/buffer/index.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -4073,8 +3962,6 @@ var init_buffer2 = __esm({
 var workerdBuffer, Buffer4, SlowBuffer2, constants3, kMaxLength2, kStringMaxLength, cloudflare_default4;
 var init_cloudflare5 = __esm({
     "node_modules/unenv/runtime/node/buffer/$cloudflare.mjs"() {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -4111,8 +3998,6 @@ var init_cloudflare5 = __esm({
 // node-built-in-modules:buffer
 var require_buffer = __commonJS({
     "node-built-in-modules:buffer"(exports, module2) {
-        init_checked_fetch();
-        init_modules_watch_stub();
         init_virtual_unenv_global_polyfill_process();
         init_virtual_unenv_global_polyfill_performance();
         init_virtual_unenv_global_polyfill_console();
@@ -4123,27 +4008,7 @@ var require_buffer = __commonJS({
     }
 });
 
-// .wrangler/tmp/bundle-dSPmBW/middleware-loader.entry.ts
-init_checked_fetch();
-init_modules_watch_stub();
-init_virtual_unenv_global_polyfill_process();
-init_virtual_unenv_global_polyfill_performance();
-init_virtual_unenv_global_polyfill_console();
-init_virtual_unenv_global_polyfill_set_immediate();
-init_virtual_unenv_global_polyfill_clear_immediate();
-
-// .wrangler/tmp/bundle-dSPmBW/middleware-insertion-facade.js
-init_checked_fetch();
-init_modules_watch_stub();
-init_virtual_unenv_global_polyfill_process();
-init_virtual_unenv_global_polyfill_performance();
-init_virtual_unenv_global_polyfill_console();
-init_virtual_unenv_global_polyfill_set_immediate();
-init_virtual_unenv_global_polyfill_clear_immediate();
-
-// _worker.src.js
-init_checked_fetch();
-init_modules_watch_stub();
+// src/_worker.src.js
 init_virtual_unenv_global_polyfill_process();
 init_virtual_unenv_global_polyfill_performance();
 init_virtual_unenv_global_polyfill_console();
@@ -5905,198 +5770,8 @@ function isValidIPv4(address) {
     return ipv4Regex.test(address);
 }
 __name(isValidIPv4, "isValidIPv4");
-
-// node_modules/wrangler/templates/middleware/middleware-ensure-req-body-drained.ts
-init_checked_fetch();
-init_modules_watch_stub();
-init_virtual_unenv_global_polyfill_process();
-init_virtual_unenv_global_polyfill_performance();
-init_virtual_unenv_global_polyfill_console();
-init_virtual_unenv_global_polyfill_set_immediate();
-init_virtual_unenv_global_polyfill_clear_immediate();
-var drainBody = /* @__PURE__ */ __name(async (request, env3, _ctx, middlewareCtx) => {
-    try {
-        return await middlewareCtx.next(request, env3);
-    } finally {
-        try {
-            if (request.body !== null && !request.bodyUsed) {
-                const reader = request.body.getReader();
-                while (!(await reader.read()).done) {
-                }
-            }
-        } catch (e) {
-            console.error("Failed to drain the unused request body.", e);
-        }
-    }
-}, "drainBody");
-var middleware_ensure_req_body_drained_default = drainBody;
-
-// node_modules/wrangler/templates/middleware/middleware-miniflare3-json-error.ts
-init_checked_fetch();
-init_modules_watch_stub();
-init_virtual_unenv_global_polyfill_process();
-init_virtual_unenv_global_polyfill_performance();
-init_virtual_unenv_global_polyfill_console();
-init_virtual_unenv_global_polyfill_set_immediate();
-init_virtual_unenv_global_polyfill_clear_immediate();
-function reduceError(e) {
-    return {
-        name: e?.name,
-        message: e?.message ?? String(e),
-        stack: e?.stack,
-        cause: e?.cause === void 0 ? void 0 : reduceError(e.cause)
-    };
-}
-__name(reduceError, "reduceError");
-var jsonError = /* @__PURE__ */ __name(async (request, env3, _ctx, middlewareCtx) => {
-    try {
-        return await middlewareCtx.next(request, env3);
-    } catch (e) {
-        const error3 = reduceError(e);
-        return Response.json(error3, {
-            status: 500,
-            headers: { "MF-Experimental-Error-Stack": "true" }
-        });
-    }
-}, "jsonError");
-var middleware_miniflare3_json_error_default = jsonError;
-
-// .wrangler/tmp/bundle-dSPmBW/middleware-insertion-facade.js
-var __INTERNAL_WRANGLER_MIDDLEWARE__ = [
-    middleware_ensure_req_body_drained_default,
-    middleware_miniflare3_json_error_default
-];
-var middleware_insertion_facade_default = worker_src_default;
-
-// node_modules/wrangler/templates/middleware/common.ts
-init_checked_fetch();
-init_modules_watch_stub();
-init_virtual_unenv_global_polyfill_process();
-init_virtual_unenv_global_polyfill_performance();
-init_virtual_unenv_global_polyfill_console();
-init_virtual_unenv_global_polyfill_set_immediate();
-init_virtual_unenv_global_polyfill_clear_immediate();
-var __facade_middleware__ = [];
-function __facade_register__(...args) {
-    __facade_middleware__.push(...args.flat());
-}
-__name(__facade_register__, "__facade_register__");
-function __facade_invokeChain__(request, env3, ctx, dispatch, middlewareChain) {
-    const [head, ...tail] = middlewareChain;
-    const middlewareCtx = {
-        dispatch,
-        next(newRequest, newEnv) {
-            return __facade_invokeChain__(newRequest, newEnv, ctx, dispatch, tail);
-        }
-    };
-    return head(request, env3, ctx, middlewareCtx);
-}
-__name(__facade_invokeChain__, "__facade_invokeChain__");
-function __facade_invoke__(request, env3, ctx, dispatch, finalMiddleware) {
-    return __facade_invokeChain__(request, env3, ctx, dispatch, [
-        ...__facade_middleware__,
-        finalMiddleware
-    ]);
-}
-__name(__facade_invoke__, "__facade_invoke__");
-
-// .wrangler/tmp/bundle-dSPmBW/middleware-loader.entry.ts
-var __Facade_ScheduledController__ = class {
-    constructor(scheduledTime, cron, noRetry) {
-        this.scheduledTime = scheduledTime;
-        this.cron = cron;
-        this.#noRetry = noRetry;
-    }
-    #noRetry;
-    noRetry() {
-        if (!(this instanceof __Facade_ScheduledController__)) {
-            throw new TypeError("Illegal invocation");
-        }
-        this.#noRetry();
-    }
-};
-__name(__Facade_ScheduledController__, "__Facade_ScheduledController__");
-function wrapExportedHandler(worker) {
-    if (__INTERNAL_WRANGLER_MIDDLEWARE__ === void 0 || __INTERNAL_WRANGLER_MIDDLEWARE__.length === 0) {
-        return worker;
-    }
-    for (const middleware of __INTERNAL_WRANGLER_MIDDLEWARE__) {
-        __facade_register__(middleware);
-    }
-    const fetchDispatcher = /* @__PURE__ */ __name(function(request, env3, ctx) {
-        if (worker.fetch === void 0) {
-            throw new Error("Handler does not export a fetch() function.");
-        }
-        return worker.fetch(request, env3, ctx);
-    }, "fetchDispatcher");
-    return {
-        ...worker,
-        fetch(request, env3, ctx) {
-            const dispatcher = /* @__PURE__ */ __name(function(type, init) {
-                if (type === "scheduled" && worker.scheduled !== void 0) {
-                    const controller = new __Facade_ScheduledController__(
-                        Date.now(),
-                        init.cron ?? "",
-                        () => {
-                        }
-                    );
-                    return worker.scheduled(controller, env3, ctx);
-                }
-            }, "dispatcher");
-            return __facade_invoke__(request, env3, ctx, dispatcher, fetchDispatcher);
-        }
-    };
-}
-__name(wrapExportedHandler, "wrapExportedHandler");
-function wrapWorkerEntrypoint(klass) {
-    if (__INTERNAL_WRANGLER_MIDDLEWARE__ === void 0 || __INTERNAL_WRANGLER_MIDDLEWARE__.length === 0) {
-        return klass;
-    }
-    for (const middleware of __INTERNAL_WRANGLER_MIDDLEWARE__) {
-        __facade_register__(middleware);
-    }
-    return class extends klass {
-        #fetchDispatcher = (request, env3, ctx) => {
-            this.env = env3;
-            this.ctx = ctx;
-            if (super.fetch === void 0) {
-                throw new Error("Entrypoint class does not define a fetch() function.");
-            }
-            return super.fetch(request);
-        };
-        #dispatcher = (type, init) => {
-            if (type === "scheduled" && super.scheduled !== void 0) {
-                const controller = new __Facade_ScheduledController__(
-                    Date.now(),
-                    init.cron ?? "",
-                    () => {
-                    }
-                );
-                return super.scheduled(controller);
-            }
-        };
-        fetch(request) {
-            return __facade_invoke__(
-                request,
-                this.env,
-                this.ctx,
-                this.#dispatcher,
-                this.#fetchDispatcher
-            );
-        }
-    };
-}
-__name(wrapWorkerEntrypoint, "wrapWorkerEntrypoint");
-var WRAPPED_ENTRY;
-if (typeof middleware_insertion_facade_default === "object") {
-    WRAPPED_ENTRY = wrapExportedHandler(middleware_insertion_facade_default);
-} else if (typeof middleware_insertion_facade_default === "function") {
-    WRAPPED_ENTRY = wrapWorkerEntrypoint(middleware_insertion_facade_default);
-}
-var middleware_loader_entry_default = WRAPPED_ENTRY;
 export {
-    __INTERNAL_WRANGLER_MIDDLEWARE__,
-    middleware_loader_entry_default as default
+    worker_src_default as default
 };
 /**
  * [js-sha256]{@link https://github.com/emn178/js-sha256}
